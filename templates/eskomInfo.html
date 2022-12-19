@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Eskom Load Shedding Information </title>
+    </head>
+    <body>
+    <br>
+    <center>
+        <h1>Eskom Load Shedding Information</h1>
+    </center>
+
+    <br>
+        <div style = "position:relative; left:80px; top:2px">
+        <h3>Kindly click on the below options - to view the corresponding data in the DB</h3>
+        <button style="height:50x;width:100px" onclick="location.href='{%url 'script'%}'">Get Status</button>
+        {% if status %}
+        {{status}}
+        {% endif %}
+        <br>
+        <br>
+        <br>
+        <form action="/areasearch/" method="post">
+            {% csrf_token %}
+
+            <input type="submit" value="Area Search - Details">&ensp; Enter Area Name: <input type = "text" name="areaName" required>
+            {% if areaSearch%}
+            {{areaSearch}}
+            {%endif%}
+        </form>
+        <br>
+        <br>
+        <form action="/areasearchGPS/" method="post">
+            {% csrf_token %}
+
+            <input type="submit" value="Area Search (GPS) - Details">&ensp; Latitude: <input type = "text" name="latitude" required> Longitude: <input type = "text" name="longitude" required>
+            {% if areasearchGPS%}
+            {{areasearchGPS}}
+            {%endif%}
+        </form>
+        <br>
+        <br>
+        <form action="/topicsNearby/" method="post">
+            {% csrf_token %}
+
+            <input type="submit" value="Topics Nearby - Details">&ensp; Latitude: <input type = "text" name="latitude" required> Longitude: <input type = "text" name="longitude" required>
+            {% if areaTopics%}
+            {{areaTopics}}
+            {%endif%}
+        </form>
+        <br>
+        <br>
+        <form action="/areainfoEvent/" method="post">
+            {% csrf_token %}
+
+            <input type="submit" value="Area Info Event- Details">&ensp; Area ID: <input type = "text" name="areaID" required>
+            {% if areainfoEvent%}
+            {{areainfoEvent}}
+            {%endif%}
+        </form>
+        <br>
+        <br>
+        <form action="/areainfoSchedule_output/" method="post">
+            {% csrf_token %}
+
+            <input type="submit" value="Area Info Schedule- Details">&ensp; Area ID: <input type = "text" name="areaID" required>
+            {% if areainfoSchedule%}
+            {{areainfoSchedule}}
+            {%endif%}
+        </form>
+        <br>
+        <br>
+        <button style="height:50x;width:100px" onclick="location.href='{%url 'allowance'%}'">Check Key Allowance</button>
+        {% if keyAllowance %}
+        {{keyAllowance}}
+        {% endif %}
+ <!--//-->
+        </div>
+    </body>
+</html>
+
